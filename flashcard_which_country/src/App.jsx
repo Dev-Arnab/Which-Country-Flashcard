@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import "./App.css";
+// import { useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0)
+// const App = () => {
+//   return(
+//     <div className="App">
+//       <h1>Country Flashcards</h1>
+//       <h3>Let's see how many can you guess correctly</h3>
+//     </div>
+//   )
+// }
+
+
+// export default App;
+
+import "./App.css";
+import { useState } from "react";
+
+const App = () => {
+  const flashcards = [
+    { question: "What is the capital of France?", answer: "Paris" },
+    { question: "What is 2 + 2?", answer: "4" },
+    { question: "What is the color of the sky?", answer: "Blue" },
+    { question: "Who wrote 'Romeo and Juliet'?", answer: "William Shakespeare" }
+  ];
+
+  const [currentCard, setCurrentCard] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+
+  const flipCard = () => setIsFlipped(!isFlipped);
+
+  const nextCard = () => {
+    setCurrentCard(Math.floor(Math.random() * flashcards.length));
+    setIsFlipped(false); // Reset to question side when switching cards
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <div className="header">
+        <h1>Flashcards</h1>
+        <h2>Total Cards: {flashcards.length}</h2>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="card" onClick={flipCard}>
+        <h2>{isFlipped ? flashcards[currentCard].answer : flashcards[currentCard].question}</h2>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+      <button onClick={nextCard}>Next</button>
+    </div>
+  );
 }
 
-export default App
+export default App;
