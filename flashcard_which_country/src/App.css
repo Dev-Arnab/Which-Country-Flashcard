@@ -1,4 +1,11 @@
+body{
+  background-image: url("Gemini_Generated_Image_xr2lrhxr2lrhxr2l.jpg");
+  background-size: cover;
+}
 
+.card{
+  background-color: black;
+}
 
 #root {
   max-width: 1280px;
