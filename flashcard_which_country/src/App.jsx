@@ -1,51 +1,47 @@
-// import "./App.css";
-// import { useState } from "react";
-
-// const App = () => {
-//   return(
-//     <div className="App">
-//       <h1>Country Flashcards</h1>
-//       <h3>Let's see how many can you guess correctly</h3>
-//     </div>
-//   )
-// }
-
-
-// export default App;
-
 import "./App.css";
 import { useState } from "react";
 
 const App = () => {
+
   const flashcards = [
-    { question: "What is the capital of France?", answer: "Paris" },
-    { question: "What is 2 + 2?", answer: "4" },
-    { question: "What is the color of the sky?", answer: "Blue" },
-    { question: "Who wrote 'Romeo and Juliet'?", answer: "William Shakespeare" }
+    {question: "Press the button for flashcards!", answer: "Start"},
+    {question: "What is sthe capital of Italy?", answer : "Rome"},
+    {question: "What is the capital of United Kingdom?", answer: "London"},
+    {question: "What is the capital of Bangladesh?", answer: "Dhaka"},
+    {question: "What is the capital of United States of America?", answer: "Washington DC"},
+    {question: "Where is Opera House?", answer: "Sydney"},
+    {question: "Which country is called the country of rising sun?", answer: "Japan" }
   ];
 
   const [currentCard, setCurrentCard] = useState(0);
-  const [isFlipped, setIsFlipped] = useState(false);
+  const [isFlipped, setFlipped] = useState(false);
 
-  const flipCard = () => setIsFlipped(!isFlipped);
+  const flipCard = () => setFlipped(!isFlipped);
 
   const nextCard = () => {
     setCurrentCard(Math.floor(Math.random() * flashcards.length));
-    setIsFlipped(false); // Reset to question side when switching cards
-  };
+    setFlipped(false);
+  }
 
   return (
     <div className="App">
+
       <div className="header">
-        <h1>Flashcards</h1>
-        <h2>Total Cards: {flashcards.length}</h2>
+        <h1>Flashcards about various countries</h1>
+        <h2>Total cards: {flashcards.length}</h2>
       </div>
+
       <div className="card" onClick={flipCard}>
-        <h2>{isFlipped ? flashcards[currentCard].answer : flashcards[currentCard].question}</h2>
+        <h3>
+          {isFlipped ? flashcards[currentCard].answer : flashcards[currentCard].question}
+        </h3>
       </div>
-      <button onClick={nextCard}>Next</button>
+
+      <button onClick={nextCard}>Next Card</button>
+
     </div>
-  );
+  )
 }
 
 export default App;
+
