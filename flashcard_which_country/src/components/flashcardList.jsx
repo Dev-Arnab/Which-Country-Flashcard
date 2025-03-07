@@ -25,7 +25,7 @@ const FlashCardList = () => {
 
     return (
         <div className="container">
-            {/* <h2>Total cards: {flashcards.length}</h2> */}
+            <h2>Total cards: {flashcards.length}</h2>
             <Flashcard 
                 card = {flashcards[currentCard]}
                 isFlipped={isFlipped}
